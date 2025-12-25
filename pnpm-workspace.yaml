@@ -21,17 +21,18 @@ ignoredBuiltDependencies:
   - package-wth-unnecessary-build-scripts
   - esbuild
 
-#minimumReleaseAge: 10080
+minimumReleaseAge: 10080
 
 minimumReleaseAgeExclude:
   - package-with-critical-hotfix@1.2.3
+  - turbo
 
 onlyBuiltDependencies:
   - package-with-necessary-build-scripts
 
 strictDepBuilds: true
 
-#trustPolicy: no-downgrade
+trustPolicy: no-downgrade
 
 trustPolicyExclude:
   - package-that-migrated-cicd@1.2.3
