@@ -4,18 +4,36 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    eslint:
+      specifier: ^9.39.2
+      version: 9.39.2
+    eslint-plugin-turbo:
+      specifier: ^2.7.2
+      version: 2.7.2
+    prettier:
+      specifier: ^3.7.4
+      version: 3.7.4
+    turbo:
+      specifier: ^2.7.2
+      version: 2.7.2
+    typescript:
+      specifier: 5.9.3
+      version: 5.9.3
+
 importers:
 
   .:
     devDependencies:
       eslint:
-        specifier: ^9.39.2
+        specifier: 'catalog:'
         version: 9.39.2
       prettier:
-        specifier: ^3.7.4
+        specifier: 'catalog:'
         version: 3.7.4
       turbo:
-        specifier: ^2.7.1
+        specifier: 'catalog:'
         version: 2.7.2
 
   apps/web:
@@ -67,11 +85,8 @@ importers:
         specifier: ^8.50.1
         version: 8.50.1(eslint@9.39.2)(typescript@5.9.3)
       eslint:
-        specifier: ^9.39.2
+        specifier: 'catalog:'
         version: 9.39.2
-      eslint-config-prettier:
-        specifier: ^10.1.8
-        version: 10.1.8(eslint@9.39.2)
       eslint-plugin-only-warn:
         specifier: ^1.1.0
         version: 1.1.0
@@ -85,13 +100,13 @@ importers:
         specifier: ^0.4.26
         version: 0.4.26(eslint@9.39.2)
       eslint-plugin-turbo:
-        specifier: ^2.7.2
+        specifier: 'catalog:'
         version: 2.7.2(eslint@9.39.2)(turbo@2.7.2)
       globals:
         specifier: ^16.5.0
         version: 16.5.0
       typescript:
-        specifier: ^5.9.2
+        specifier: 'catalog:'
         version: 5.9.3
       typescript-eslint:
         specifier: ^8.50.0
@@ -121,10 +136,10 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.7)
       eslint:
-        specifier: ^9.39.2
+        specifier: 'catalog:'
         version: 9.39.2
       typescript:
-        specifier: 5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
 packages:
@@ -850,12 +865,6 @@ packages:
   escape-string-regexp@4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
-
-  eslint-config-prettier@10.1.8:
-    resolution: {integrity: sha512-82GZUjRS0p/jganf6q1rEO25VSoHH0hKPCTrgillPjdI/3bgBhAE1QzHrHTizjpRvy6pGAvKjDJtk2pF9NDq8w==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
 
   eslint-plugin-only-warn@1.1.0:
     resolution: {integrity: sha512-2tktqUAT+Q3hCAU0iSf4xAN1k9zOpjK5WO8104mB0rT/dGhOa09582HN5HlbxNbPRZ0THV7nLGvzugcNOSjzfA==}
@@ -2451,10 +2460,6 @@ snapshots:
   escalade@3.2.0: {}
 
   escape-string-regexp@4.0.0: {}
-
-  eslint-config-prettier@10.1.8(eslint@9.39.2):
-    dependencies:
-      eslint: 9.39.2
 
   eslint-plugin-only-warn@1.1.0: {}
 
