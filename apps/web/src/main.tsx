@@ -15,7 +15,7 @@ const App = () => (
         alt="TypeScript logo"
       />
     </a>
-    <Header title="Web React Vite" />
+    <Header title="Web React Vite 9:41PM" />
     <div className="card">
       <Counter />
     </div>
