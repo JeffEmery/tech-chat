@@ -25,12 +25,6 @@ jobs:
         with:
           submodules: true
           lfs: false
-
-      - name: Setup node
-        uses: actions/setup-node@v6
-        with:
-          node-version: '>=24.12.0'
-          cache: 'pnpm'
           
       - name: Setup pnpm
         # You may pin to the exact commit or the version.
@@ -50,6 +44,12 @@ jobs:
           # When set to true, @pnpm/exe, which is a Node.js bundled package, will be installed, enabling using pnpm without Node.js.
           standalone: false
 
+      - name: Setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '>=24.12.0'
+          cache: 'pnpm'
+          
       - name: Install dependencies
         run: pnpm install
  
@@ -86,6 +86,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_MEADOW_06C666B10 }}
           action: "close"
+
 
 
 
