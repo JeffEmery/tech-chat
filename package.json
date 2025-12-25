@@ -15,5 +15,9 @@
   },
   "engines": {
     "node": ">=24.12"
+  },
+  "devEngines": {
+    "node": ">=24.12",
+    "packageManager": "pnpm@10.25.0"
   }
 }
