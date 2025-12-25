@@ -20,7 +20,8 @@ jobs:
     
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
           submodules: true
           lfs: false
@@ -41,10 +42,20 @@ jobs:
           # When set to true, @pnpm/exe, which is a Node.js bundled package, will be installed, enabling using pnpm without Node.js.
           standalone: false
 
-      - uses: actions/setup-node@v6
+      - name: Setup node
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          node-version: '>=24.12.0'
           cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+ 
+      - name: Build
+        run: pnpm build
+ 
+      # - name: Test
+      #   run: pnpm test          
     
       - name: Build And Deploy
         id: builddeploy
@@ -73,6 +84,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WHITE_MEADOW_06C666B10 }}
           action: "close"
+
 
 
 
