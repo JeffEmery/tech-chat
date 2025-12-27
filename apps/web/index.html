@@ -5,9 +5,44 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
+    <script>
+      (function () {
+        if (
+          !globalThis.chatbase ||
+          globalThis.chatbase("getState") !== "initialized"
+        ) {
+          globalThis.chatbase = (...args) => {
+            if (!globalThis.chatbase.q) {
+              globalThis.chatbase.q = [];
+            }
+            globalThis.chatbase.q.push(args);
+          };
+          globalThis.chatbase = new Proxy(globalThis.chatbase, {
+            get(target, prop) {
+              if (prop === "q") {
+                return target.q;
+              }
+              return (...args) => target(prop, ...args);
+            },
+          });
+        }
+        const onLoad = function () {
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.id = "phvfi1BLeWhC3uVaxG8nE";
+          script.domain = "www.chatbase.co";
+          document.body.appendChild(script);
+        };
+        if (document.readyState === "complete") {
+          onLoad();
+        } else {
+          globalThis.addEventListener("load", onLoad);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- <script type="module" src="/src/main.tsx"></script> -->
   </body>
 </html>
