@@ -1,25 +1,30 @@
+import React from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
-import typescriptLogo from "/typescript.svg";
-import { Header, Counter } from "@repo/ui";
+import { Header } from "@repo/ui";
+import { BrowserRouter, Route, Routes } from "react-router";
+
+const LandingPage = () => (
+  <div>
+    <Header title="Envision Technologist Assistant" />
+  </div>
+);
+
+const ChatPage = () => (
+  <div>
+    <Header title="Chat with the Envision Technologist" />
+  </div>
+);
 
 const App = () => (
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" className="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img
-        src={typescriptLogo}
-        className="logo vanilla"
-        alt="TypeScript logo"
-      />
-    </a>
-    <Header title="Web React Vite 12:02PM" />
-    <div className="card">
-      <Counter />
-    </div>
-  </div>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/chat" element={<ChatPage />} />
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 createRoot(document.getElementById("app")!).render(<App />);

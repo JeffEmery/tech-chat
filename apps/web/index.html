@@ -2,22 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/enra.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Envision Technologist Chat</title>
     <script>
       (function () {
-        if (
-          !globalThis.chatbase ||
-          globalThis.chatbase("getState") !== "initialized"
-        ) {
-          globalThis.chatbase = (...args) => {
-            if (!globalThis.chatbase.q) {
-              globalThis.chatbase.q = [];
+        if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+          window.chatbase = (...args) => {
+            if (!window.chatbase.q) {
+              window.chatbase.q = [];
             }
-            globalThis.chatbase.q.push(args);
+            window.chatbase.q.push(args);
           };
-          globalThis.chatbase = new Proxy(globalThis.chatbase, {
+          window.chatbase = new Proxy(window.chatbase, {
             get(target, prop) {
               if (prop === "q") {
                 return target.q;
@@ -36,13 +33,13 @@
         if (document.readyState === "complete") {
           onLoad();
         } else {
-          globalThis.addEventListener("load", onLoad);
+          window.addEventListener("load", onLoad);
         }
       })();
     </script>
   </head>
   <body>
     <div id="app"></div>
-    <!-- <script type="module" src="/src/main.tsx"></script> -->
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
