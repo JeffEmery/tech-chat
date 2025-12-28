@@ -20,6 +20,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -44,14 +45,35 @@ h1 {
   text-align: center;
 }
 
+#fullscreen-iframe {
+  position: fixed;
+  /* Position relative to the viewport */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  /* Cover full width */
+  height: 100%;
+  /* Cover full height */
+  border: none;
+  /* Remove default iframe border */
+  overflow: hidden;
+  /* Hide scrollbars if content is larger */
+  z-index: 9999;
+  /* Ensure it's above other elements */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
@@ -75,9 +97,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -88,9 +112,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
