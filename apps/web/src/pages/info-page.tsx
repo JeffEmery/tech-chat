@@ -1,19 +1,34 @@
 import { Header } from "@repo/ui";
 import { Sun, Moon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
+
+// TODO: Move theme logic into context provider with custom hook
+
+type Theme = "dark" | "light";
 
 export default function InfoPage() {
-    const savedTheme = localStorage.getItem("theme");
-    const [theme, setTheme] = useState<string>(savedTheme ?? 'dark');
+    const [theme, setTheme] = useState<Theme>(() => {
+        try {
+            const saved = localStorage.getItem("theme");
+            return (saved === "dark" || saved === "light") ? saved : "dark";
+        } catch {
+            return 'dark';
+        }
+    });
+
+    // Enable transitions after mount
+    useLayoutEffect(() => {
+        document.body.classList.add("transition-colors", "duration-300", "ease-in-out");
+    }, []);
+
+    useLayoutEffect(() => {
+        document.body.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
     const toggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
-
-    useEffect(() => {
-        document.body.dataset.theme = theme;
-        localStorage.setItem("theme", theme);
-    }, [theme]);
 
     return (
         <div>
