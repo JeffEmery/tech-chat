@@ -1,18 +1,18 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import "./style.css";
+import { createRoot } from "react-dom/client";
 import { Header } from "@repo/ui";
 import { BrowserRouter, Route, Routes } from "react-router";
+import InfoPage from "./pages/info-page";
 
 const ChatPage = () => (
   <div>
-    <Header title="Envision Technologist Assistant" />
+    <Header title="Envision AI Tech Assistant" />
   </div>
 );
 
 const LandingPage = () => (
   <div>
-    {/* <Header title="Chat with the Envision Technologist" /> */}
     <iframe id="fullscreen-iframe"
       src="https://www.chatbase.co/phvfi1BLeWhC3uVaxG8nE/help"
       title="Example Website"
@@ -30,6 +30,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/chat" element={<ChatPage />} />
+        <Route path="/info" element={<InfoPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
