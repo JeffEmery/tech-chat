@@ -1,34 +1,6 @@
 import { Header } from "@repo/ui";
-import { Sun, Moon } from "lucide-react";
-import { useLayoutEffect, useState } from "react";
-
-// TODO: Move theme logic into context provider with custom hook
-
-type Theme = "dark" | "light";
 
 export default function InfoPage() {
-    const [theme, setTheme] = useState<Theme>(() => {
-        try {
-            const saved = localStorage.getItem("theme");
-            return (saved === "dark" || saved === "light") ? saved : "dark";
-        } catch {
-            return 'dark';
-        }
-    });
-
-    // Enable transitions after mount
-    useLayoutEffect(() => {
-        document.body.classList.add("transition-colors", "duration-300", "ease-in-out");
-    }, []);
-
-    useLayoutEffect(() => {
-        document.body.dataset.theme = theme;
-        localStorage.setItem("theme", theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
-    };
 
     return (
         <div>
@@ -48,9 +20,6 @@ export default function InfoPage() {
                 Ongoing feedback helps improve performance.
                 Use thumbs down 👎 to flag responses that are unclear or incorrect, and thumbs up 👍 to confirm helpful answers.
             </p>
-            <div className="fixed bottom-0 left-0 right-0 p-4 text-center">
-                {theme === "dark" ? <Sun onClick={toggleTheme} /> : <Moon onClick={toggleTheme} />}
-            </div>
         </div>
     );
 }

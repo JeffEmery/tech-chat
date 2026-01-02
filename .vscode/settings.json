@@ -3,5 +3,8 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "editor.wordWrapColumn": 120,
+  "prettier.printWidth": 120,
+  "editor.tabSize": 2
 }
